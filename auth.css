@@ -1,0 +1,160 @@
+:root{
+  --black:#000000;
+  --panel:#121212; 
+  --line:#2e2e2e;
+  --green:#009b3a; 
+  --gold:#fed100; 
+  --white:#ffffff; 
+  --muted:#bdbdbd; 
+  --bad:#ff7b6b;
+}
+*{
+  box-sizing:border-box
+}
+
+html,body{
+  margin:0
+}
+
+body{
+  min-height:100vh;
+  display:grid;
+  place-items:center;
+  padding:24px 16px;
+  background:var(--black);
+  color:var(--white);
+  font:16px/1.5 "Segoe UI","Helvetica Neue",system-ui,sans-serif;
+}
+
+body::before{
+  content:"";
+  position:fixed;
+  inset:0 0 auto;
+  height:6px;
+  background:linear-gradient(90deg,var(--green) 0 33.3%,var(--gold) 33.3% 66.6%,var(--black) 66.6%);
+}
+
+.card{
+  width:100%;
+  max-width:420px;
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:20px;
+  padding:32px 28px;
+  border-top:6px solid var(--gold);
+}
+
+.brand{
+  font:900 2rem/1 "Arial Black",sans-serif;
+  color:var(--white)
+}
+
+.brand span{
+  color:var(--gold)
+}
+
+h1{font:800 1.5rem/1.2 "Arial Black",sans-serif;
+  margin:18px 0 0}
+
+.tag{
+  color:var(--muted);
+  margin:8px 0 20px
+}
+
+.tabs{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:6px;background:var(--black);
+  padding:5px;
+  border-radius:12px;
+  margin-bottom:18px
+}
+
+.tabs a{
+  text-align:center;
+  padding:9px;
+  border-radius:9px;
+  color:var(--muted);
+  text-decoration:none;
+  font-weight:700
+}
+
+.tabs a:hover{
+  color:var(--white)
+}
+
+.tabs a.on{
+  background:var(--green);
+  color:var(--white)
+}
+
+label{
+  display:block;
+  font-weight:600;
+  margin:14px 0 6px
+}
+
+input{
+  width:100%;
+  font:inherit;
+  padding:11px 13px;
+  border-radius:12px;
+  border:2px solid var(--line);
+  background:var(--black);
+  color:var(--white);
+}
+
+input:focus{
+  outline:none;
+  border-color:var(--gold);
+  box-shadow:0 0 0 3px rgba(254,209,0,.25)
+}
+
+.submit{
+  display:block;width:100%;
+  margin-top:22px;
+  padding:13px;border:0;
+  border-radius:12px;
+  cursor:pointer;
+  background:var(--gold);
+  color:var(--black);
+  font:800 1rem "Segoe UI",system-ui,sans-serif;
+  text-align:center;
+  text-decoration:none;
+}
+
+.submit:hover{
+  filter:brightness(1.07)
+}
+
+.submit:focus-visible,
+.tabs a:focus-visible,
+
+a:focus-visible{
+  outline:3px solid var(--white);
+outline-offset:2px
+}
+
+.errors{
+  background:rgba(255,123,107,.12);
+border:1px solid var(--bad);
+border-radius:12px;
+padding:10px 14px;
+margin-bottom:6px
+}
+
+.errors ul{
+  margin:0;
+padding-left:18px
+}
+
+.switch{
+  text-align:center;
+color:var(--muted);
+margin:18px 0 0
+}
+
+a{
+  color:var(--gold);
+font-weight:700
+}
