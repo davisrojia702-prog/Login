@@ -1,4 +1,6 @@
 <?php
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
 
 require __DIR__ . '/db.php';
 session_start();
@@ -104,22 +106,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <?php endforeach; ?>
         </ul>
     </div>
-  <?php endif; 
-  ?>
+<?php endif; 
+?>
+    <div class="tabs" role="tablist">
+        <a href="?tab=login" class="<?= $tab === 'login' ? 'on' : '' ?>">Log in</a>
+        <a href="?tab=register" class="<?= $tab === 'register' ? 'on' : '' ?>">Register</a>
+    </div>
 
-   <div class="tabs" role="tablist">
-     <a href="?tab=login" class="<?= $tab === 'login' ? 'on' : '' ?>">Log in</a>
-     <a href="?tab=register" class="<?= $tab === 'register' ? 'on' : '' ?>">Register</a>
-   </div>
-
-  <form method="post" novalidate>
+<form method="post" novalidate>
     <input type="hidden" name="csrf" value="<?= h($_SESSION['csrf']) ?>">
     <input type="hidden" name="action" value="<?= $tab ?>">
 
     <?php if ($tab === 'register'): ?>
+
     <label for="name">Full name</label>
     <input id="name" name="name" type="text" autocomplete="name" maxlength="30" value="<?= h($old['name']) ?>" required>
     <?php endif; ?>
+
 
     <label for="email"> Create Email</label>
     <input id="email" name="email" type="email" autocomplete="email" value="<?= h($old['email']) ?>" required>
@@ -127,8 +130,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <label for="password"> Create Password</label>
 
     <div class="pw">
-      <input id="password" name="password" type="password" autocomplete="<?= $tab === 'register' ? 'new-password' : 'current-password' ?>" required>
-      <button type="button" class="show" data-target="password">Show</button>
+        <input id="password" name="password" type="password" autocomplete="<?= $tab === 'register' ? 'new-password' : 'current-password' ?>" required>
+        <button type="button" class="show" data-target="password">Show</button>
     </div>
 
     <?php if ($tab === 'register'): ?>
@@ -140,22 +143,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <button type="submit" class="submit">
         <?= $tab === 'register' ? 'Create account' : 'Log in' ?></button>
-  </form>
+</form>
 
-  <p class="switch">
+<p class="switch">
     <?php if ($tab === 'register'): ?>Already have an account? <a href="?tab=login">Log in</a>
     <?php else: ?>lets get started by <a href="?tab=register">Create an account</a>
     <?php endif; ?>
-  </p>
+</p>
 </main>
 
 
 <script>
 document.querySelectorAll('.show').forEach(b => b.addEventListener('click', () => {
-  const i = document.getElementById(b.dataset.target);
-  const show = i.type === 'password';
-  i.type = show ? 'text' : 'password';
-  b.textContent = show ? 'Hide' : 'Show';
+    const i = document.getElementById(b.dataset.target);
+    const show = i.type === 'password';
+    i.type = show ? 'text' : 'password';
+    b.textContent = show ? 'Hide' : 'Show';
 }));
 </script>
 

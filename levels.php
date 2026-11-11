@@ -1,8 +1,8 @@
 <?php
 
 return [
-    'easy'      => ['label' => 'Easy',      'cards' => 4,  'seconds' => 20, 'note' => 'Light work.'],
-    'medium'    => ['label' => 'Medium',    'cards' => 8,  'seconds' => 45, 'note' => 'You getting there.'],
-    'hard'      => ['label' => 'Hard',      'cards' => 12, 'seconds' => 60, 'note' => 'Think fast.'],
-    'difficult' => ['label' => 'Difficult', 'cards' => 16, 'seconds' => 45, 'note' => 'Do even try.'],
+    'easy'      => ['label' => 'Easy',      'cards' => 6,  'seconds' => 20, 'note' => 'Come nuh.'],
+    'medium'    => ['label' => 'Medium',    'cards' => 12,  'seconds' => 45, 'note' => '............'],
+    'hard'      => ['label' => 'Hard',      'cards' => 18, 'seconds' => 60, 'note' => 'Him turn big man now. Lol.'],
+    'difficult' => ['label' => 'Difficult', 'cards' => 24, 'seconds' => 45, 'note' => 'Nuh badda try.'],
 ];

@@ -1,0 +1,215 @@
+:root{--black:#0b0b0b;
+    --panel:#161616;
+    --line:#333;
+    --green:#009b3a
+    --gold:#fed100;
+    --white:#fff;
+    --muted:#bdbdbd;
+    --bad:#ff7b6b
+}
+*{
+    box-sizing:border-box
+}
+body{
+    margin:0;
+    min-height:100vh;
+    color:var(--white);
+    background:var(--black);
+    font:16px/1.5 "Segoe UI","Helvetica Neue",system-ui,sans-serif
+}
+body::before{
+    content:"";
+    position:fixed;
+    inset:0 0 auto;
+    height:6px;
+    background:linear-gradient(90deg,var(--green) 0 33.3%,var(--gold) 33.3% 66.6%,var(--black) 66.6%)
+}
+.wrap{
+    max-width:720px;
+    margin:0 auto;
+    padding:26px 18px 56px
+}
+nav{display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:12px;
+    margin-bottom:28px
+}
+.word{
+    font:900 1.2rem "Arial Black",sans-serif
+}
+.word b{
+    color:var(--gold)
+}
+nav a{
+    color:var(--muted);
+    text-decoration:none;
+    font-weight:600;
+    margin-left:18px
+}
+nav a:hover{
+    color:var(--white)
+}
+.top{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    flex-wrap:wrap;
+    gap:8px 24px;
+    margin-bottom:18px
+}
+h1{
+    font:900 clamp(1.8rem,6vw,2.6rem)/1.1 "Arial Black",sans-serif;
+    margin:0
+}
+h1 span{
+    color:var(--gold)
+}
+h2{
+    font:900 1.4rem "Arial Black",sans-serif;
+    margin:0 0 6px
+}
+.stats{
+    color:var(--muted)
+}
+.stats b{
+    color:var(--gold);
+    margin:0 16px 0 4px;
+    font-variant-numeric:tabular-nums
+}
+.stats b.low{
+    color:var(--bad)
+}
+
+.board{
+    display:grid;
+    gap:10px;
+    grid-template-columns:repeat(var(--cols,4),1fr);
+    max-width:var(--maxw,520px);
+    margin:0 auto
+}
+.board.hidden{
+    visibility:hidden
+}
+.card{
+    aspect-ratio:3/4;border:0;
+    padding:0;
+    background:none;
+    position:relative;
+    cursor:pointer;
+    perspective:700px
+}
+.card:focus-visible{
+    outline:3px solid var(--white);
+    outline-offset:3px
+}
+.inner{
+    position:absolute;
+    inset:0;
+    transition:transform .35s;
+    transform-style:preserve-3d
+}
+.card.up .inner,
+.card.done .inner{
+    transform:rotateY(180deg)
+}
+.back,
+.face{
+    position:absolute;
+    inset:0;
+    border-radius:14px;
+    backface-visibility:hidden;
+    -webkit-backface-visibility:hidden;
+    display:grid;
+    place-items:center
+}
+.back{
+    background:linear-gradient(145deg,var(--green)
+    ,#006b27);
+    border:2px solid #38c56a;
+    box-shadow:0 5px 0 #004d1c;
+    color:var(--gold);
+    font:900 1.6rem "Arial Black",sans-serif
+}
+.card:hover .back{
+    border-color:var(--gold)
+}
+.face{
+    background:var(--white);
+    transform:rotateY(180deg);
+    font-size:clamp(1.8rem,8vw,2.8rem);
+    border:3px solid var(--line)
+}
+.card.done .face{
+    background:var(--gold);
+    border-color:var(--gold)
+}
+.card.miss .face{
+    border-color:var(--bad)
+}
+
+.panel{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:18px;
+    padding:22px;
+    margin:24px auto 0;
+    max-width:520px
+}
+.panel p{
+    margin:0;
+    color:var(--muted)
+}
+.row{
+    display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.row.center{
+    justify-content:center;
+    max-width:520px;
+    margin:18px auto 0
+}
+.btn,.btn-ghost{
+    display:inline-block;
+    font:inherit;
+    font-weight:800;
+    cursor:pointer;
+    border-radius:999px;
+    text-decoration:none;
+    padding:13px 28px
+}
+.btn{
+    border:0;
+    background:var(--green);
+    color:var(--white);
+    box-shadow:0 5px 0 #006b27
+}
+.btn:active{
+    transform:translateY(2px);
+    box-shadow:0 3px 0 #006b27
+}
+.btn-ghost{
+    border:2px solid var(--line);
+    background:var(--black);
+    color:var(--white);
+    padding:11px 22px
+}
+.btn-ghost:hover{
+    border-color:var(--gold);
+    color:var(--gold)
+}
+.btn:focus-visible,.btn-ghost:focus-visible{
+    outline:3px solid var(--white);
+    outline-offset:3px
+}
+.err{
+    color:var(--bad)!important;
+    margin-top:14px!important;
+    word-break:break-word
+}
+[hidden]{
+    display:none!important
+}
+@media (prefers-reduced-motion:reduce){
+    .inner{
+        transition:none
+    }
+}
